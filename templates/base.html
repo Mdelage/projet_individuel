@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Babby's first taskmanager app{% endblock %}</title>
+</head>
+<body>
+    <!-- Header block -->
+    <div>
+        <h1>{% block header %}Babby's first taskmanager app{% endblock %}</h1>
+    </div>
+
+    <!-- Content block -->
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer block -->
+    <div>
+        <footer>{% block footer %}Créé par Martin{% endblock %}</footer>
+    </div>
+</body>
+</html>
