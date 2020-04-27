@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+# This view allows users to log in
+def login(request):
+    return request
