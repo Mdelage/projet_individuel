@@ -2,4 +2,23 @@
 
 {% block content %}
     <h1>Projects</h1>
+
+    <!-- List of all the projects -->
+    <table>
+        {% for project, users in users_per_project.items %}
+            <tr>
+                {#                This list all projects, then all the users associated with this project#}
+                <td>{{ project.name }}</td>
+                <td>{% for user in users %}
+                    {{ user.username }}
+                {% empty %}
+                {% endfor %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td>Pas de projet!</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
