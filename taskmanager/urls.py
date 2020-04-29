@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
-    # Login page for users
-    path('login/', views.login, name="login"),
+    # Login page for users, uses the generic class-based view LoginView
+    path('login/', LoginView.as_view(template_name='taskmanager/login.html'), name="login"),
 ]
