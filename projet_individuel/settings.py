@@ -125,3 +125,9 @@ STATICFILES_DIR = (
     os.path.join(BASE_DIR, '/static/'),
     os.path.join(BASE_DIR, '/taskmanager/static/')
 )
+
+# URL to which the user is redirected after having logged out
+LOGOUT_REDIRECT_URL = '/taskmanager/login'
+
+# URL to which the user is redirected after having logged in
+# LOGIN_REDIRECT_URL = ''

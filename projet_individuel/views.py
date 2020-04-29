@@ -4,4 +4,4 @@ from taskmanager import views
 
 # This view redirects the user to the login page, in the taskmanager app
 def welcome(request):
-    return redirect(views.login, permanent=True)
+    return redirect('taskmanager/login/', permanent=True)
