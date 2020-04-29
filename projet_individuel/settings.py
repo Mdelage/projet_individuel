@@ -130,4 +130,4 @@ STATICFILES_DIR = (
 LOGOUT_REDIRECT_URL = '/taskmanager/login'
 
 # URL to which the user is redirected after having logged in
-# LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/taskmanager/projects'
