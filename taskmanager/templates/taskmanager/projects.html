@@ -5,6 +5,10 @@
 
     <!-- List of all the projects -->
     <table>
+        <tr>
+            <th></th>
+            <th>Utilisateurs participant au projet</th>
+        </tr>
         {% for project, users in users_per_project.items %}
             <tr>
                 {#                This list all projects, then all the users associated with this project#}

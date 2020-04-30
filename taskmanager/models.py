@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # This model represents a project
@@ -13,3 +14,38 @@ class Project(models.Model):
     class Meta:
         ordering = ['name']
         verbose_name = "projet"
+
+
+# This model represents the status of a task, in a project (started, finished, ...)
+class Status(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Nom de la tâche")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = "statut"
+
+
+# This model represents a task of a project
+class Task(models.Model):
+    project = models.ForeignKey(Project, verbose_name="Projet rattaché à la tâche", on_delete="CASCADE")
+    name = models.CharField(max_length=500, verbose_name="Nom de la tâche")
+    description = models.TextField(blank=True, verbose_name="Description de la tâche")
+    assignee = models.ForeignKey(
+        User,
+        verbose_name="Personne réalisant la tâche",
+        on_delete="CASCADE",
+    )
+    start_date = models.DateTimeField(default=timezone.now, verbose_name="Date de commencement de la tâche")
+    due_date = models.DateTimeField(default=timezone.now, verbose_name="Date de rendu de la tâche")
+    priority = models.IntegerField(default=0, verbose_name="Priorité de la tâche")
+    status = models.ForeignKey(Status, verbose_name="Statut de la tâche", null=True, on_delete="SET_NULL")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['status']
+        verbose_name = "tâche"
