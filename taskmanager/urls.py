@@ -8,5 +8,8 @@ urlpatterns = [
     # Lists of the projects
     path('projects/', views.projects, name="view_all_projects"),
     # Lists of the tasks of a project
-    path('projects/<int:id_project>', views.tasks_of_project, name="view_tasks"),
+    path('projects/<int:id_project>/', views.tasks_of_project, name="view_tasks"),
+    path('projects/<int:id_project>/tasks/', views.tasks_of_project, name="view_tasks_alt"),
+    # Details of a task
+    path('projects/<int:id_project>/tasks/<int:id_task>/', views.details_of_task, name="view_details"),
 ]

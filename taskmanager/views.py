@@ -25,3 +25,14 @@ def tasks_of_project(request, id_project):
         "project": project,
         "tasks": tasks
     })
+
+
+# This view displays the details of a task
+@login_required
+def details_of_task(request, id_project, id_task):
+    # Retrieves the corresponding project, task and its entries
+    project = get_object_or_404(Project, id=id_project)
+    task = get_object_or_404(Task, project=project, id=id_task)
+    entries = History.objects.filter(task=task)
+
+    return render(request, "taskmanager/details.html", locals())

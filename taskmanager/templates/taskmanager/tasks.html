@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Tâches de {{ project.name }}</h1>
+    <h1>{{ project.name }}</h1>
 
     <table>
         <tr>
@@ -13,11 +13,11 @@
         </tr>
         {% for task in tasks %}
             <tr>
-                <th>{{ task.name }}</th>
-                <th>{{ task.assignee }}</th>
-                <th>{{ task.status }}</th>
-                <th>{{ task.start_date }}</th>
-                <th>{{ task.due_date }}</th>
+                <td><a href="{% url "view_details" project.id task.id %}">{{ task.name }}</a></td>
+                <td>{{ task.assignee }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.start_date }}</td>
+                <td>{{ task.due_date }}</td>
             </tr>
         {% empty %}
         {% endfor %}

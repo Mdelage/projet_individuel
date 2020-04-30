@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ project.name }}</h1>
+    <h2>{{ task.name }}</h2>
+    <p>{{ task.description }}</p>
+
+    <table>
+        <tr>
+            <td>Personne en charge</td>
+            <td>{{ task.assignee }}</td>
+        </tr>
+        <tr>
+            <td>Date de début</td>
+            <td>{{ task.start_date }}</td>
+        </tr>
+        <tr>
+            <td>Date de rendu</td>
+            <td>{{ task.due_date }}</td>
+        </tr>
+        <tr>
+            <td>Statut</td>
+            <td>{{ task.status }}</td>
+        </tr>
+    </table>
+
+    <h3>Journal</h3>
+    <table>
+        <tr>
+            <th>Entrées</th>
+            <th>Auteur</th>
+            <th>Date</th>
+        </tr>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.entry }}</td>
+                <td>{{ entry.author }}</td>
+                <td>{{ entry.date }}</td>
+            </tr>
+        {% empty %}
+        {% endfor %}
+    </table>
+{% endblock %}
