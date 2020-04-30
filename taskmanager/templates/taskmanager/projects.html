@@ -11,8 +11,8 @@
         </tr>
         {% for project, users in users_per_project.items %}
             <tr>
-                {#                This list all projects, then all the users associated with this project#}
-                <td>{{ project.name }}</td>
+                {#This list all projects, then all the users associated with this project#}
+                <td><a href={% url "view_tasks" project.id %}>{{ project.name }}</a></td>
                 <td>{% for user in users %}
                     {{ user.username }}
                 {% empty %}
