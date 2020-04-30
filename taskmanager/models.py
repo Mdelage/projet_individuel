@@ -49,3 +49,19 @@ class Task(models.Model):
     class Meta:
         ordering = ['status']
         verbose_name = "tâche"
+
+
+# This model represents the history of a task
+class History(models.Model):
+    date = models.DateTimeField(default=timezone.now, verbose_name="Date de l'entrée du journal")
+    entry = models.TextField(verbose_name="Entrée du journal")
+    author = models.ForeignKey(User, verbose_name="Auteur de l'entrée", on_delete="CASCADE")
+    task = models.ForeignKey(Task, verbose_name="Tâche s'y rattachant", on_delete="CASCADE")
+
+    def __str__(self):
+        return self.entry
+
+    class Meta:
+        ordering = ['date']
+        verbose_name = "entrée du journal"
+        verbose_name_plural = "entrées du journal"
