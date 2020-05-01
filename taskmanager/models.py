@@ -38,7 +38,7 @@ class Task(models.Model):
         verbose_name="Personne réalisant la tâche",
         on_delete="CASCADE",
     )
-    start_date = models.DateTimeField(default=timezone.now, verbose_name="Date de commencement de la tâche")
+    start_date = models.DateTimeField(default=timezone.now, verbose_name="Date de début de la tâche")
     due_date = models.DateTimeField(default=timezone.now, verbose_name="Date de rendu de la tâche")
     priority = models.IntegerField(default=0, verbose_name="Priorité de la tâche")
     status = models.ForeignKey(Status, verbose_name="Statut de la tâche", null=True, on_delete="SET_NULL")

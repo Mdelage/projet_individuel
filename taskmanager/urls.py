@@ -12,4 +12,6 @@ urlpatterns = [
     path('projects/<int:id_project>/tasks/', views.tasks_of_project, name="view_tasks_alt"),
     # Details of a task
     path('projects/<int:id_project>/tasks/<int:id_task>/', views.details_of_task, name="view_details"),
+    # Adding a task to a project
+    path('projects/<int:id_project>/newtask/', views.add_a_task, name="add_a_task"),
 ]

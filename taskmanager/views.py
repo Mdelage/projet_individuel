@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
+from .forms import *
 
 
 # This view displays all the projects
@@ -36,3 +37,31 @@ def details_of_task(request, id_project, id_task):
     entries = History.objects.filter(task=task)
 
     return render(request, "taskmanager/details.html", locals())
+
+
+# This view allows the user to add a task to project
+@login_required
+def add_a_task(request, id_project):
+    # Retrieves the corresponding project
+    project = get_object_or_404(Project, id=id_project)
+    # Create a task from this project, with the other fields empty
+    task = Task(project=project)
+    # Create the associated form
+    form = TaskForm(request.POST or None, instance=task)
+
+    envoi = False
+
+    if form.is_valid():
+        # task.name = form.cleaned_data['name']
+        # task.description = form.cleaned_data['description']
+        # task.assignee = form.cleaned_data['assignee']
+        # task.start_date = form.cleaned_data['start_date']
+        # task.due_date = form.cleaned_data['due_date']
+        # task.priority = form.cleaned_data['priority']
+        # task.status = form.cleaned_data['status']
+
+        form.save()
+
+        envoi = True
+
+    return render(request, 'taskmanager/create-task.html', locals())

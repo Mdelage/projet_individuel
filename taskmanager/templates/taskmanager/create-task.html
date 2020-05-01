@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Créer une tâche pour le projet : {{ project.name }}</h1>
+
+    <form method="post" action="{% url "add_a_task" project.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Créer une tâche"/>
+    </form>
+
+    {% if envoi %}<h3>Tâche créée!</h3>{% endif %}
+
+    <a href="{% url "view_tasks" project.id %}">Retour à la liste des tâches</a>
+
+{% endblock %}
