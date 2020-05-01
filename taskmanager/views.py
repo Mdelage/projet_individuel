@@ -52,16 +52,34 @@ def add_a_task(request, id_project):
     envoi = False
 
     if form.is_valid():
-        # task.name = form.cleaned_data['name']
-        # task.description = form.cleaned_data['description']
-        # task.assignee = form.cleaned_data['assignee']
-        # task.start_date = form.cleaned_data['start_date']
-        # task.due_date = form.cleaned_data['due_date']
-        # task.priority = form.cleaned_data['priority']
-        # task.status = form.cleaned_data['status']
-
         form.save()
-
         envoi = True
 
     return render(request, 'taskmanager/create-task.html', locals())
+
+
+# This view allows the user to modify an existing task
+@login_required
+def modify_a_task(request, id_project, id_task):
+    # Retrieves the corresponding project and task
+    project = get_object_or_404(Project, id=id_project)
+    task = get_object_or_404(Task, id=id_task)
+    # Create the associated form
+    form = TaskForm(request.POST or None, instance=task)
+
+    modified = False
+
+    if form.is_valid():
+        task.name = form.cleaned_data['name']
+        task.description = form.cleaned_data['description']
+        task.assignee = form.cleaned_data['assignee']
+        task.start_date = form.cleaned_data['start_date']
+        task.due_date = form.cleaned_data['due_date']
+        task.priority = form.cleaned_data['priority']
+        task.status = form.cleaned_data['status']
+
+        task.save()
+
+        modified = True
+
+    return render(request, 'taskmanager/modify-task.html', locals())

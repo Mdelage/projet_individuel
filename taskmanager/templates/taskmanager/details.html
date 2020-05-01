@@ -19,10 +19,16 @@
             <td>{{ task.due_date }}</td>
         </tr>
         <tr>
+            <td>Priorité</td>
+            <td>{{ task.priority }}</td>
+        </tr>
+        <tr>
             <td>Statut</td>
             <td>{{ task.status }}</td>
         </tr>
     </table>
+
+    <h3><a href="{% url "modify_a_task" project.id task.id %}">Modifier la tâche</a></h3>
 
     <h3>Journal</h3>
     <table>
