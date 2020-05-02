@@ -46,4 +46,6 @@
         {% empty %}
         {% endfor %}
     </table>
+
+    <h4><a href="{% url "add_an_entry" project.id task.id %}">Ajouter une entrée</a></h4>
 {% endblock %}

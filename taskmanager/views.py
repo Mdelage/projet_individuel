@@ -83,3 +83,26 @@ def modify_a_task(request, id_project, id_task):
         modified = True
 
     return render(request, 'taskmanager/modify-task.html', locals())
+
+
+# This view allows an user to add an entry to a task
+@login_required
+def add_an_entry(request, id_project, id_task):
+    # Retrieves the corresponding project and task
+    project = get_object_or_404(Project, id=id_project)
+    task = get_object_or_404(Task, id=id_task)
+    # Retrieves the user currently connected
+    user = request.user
+    # Create the form associated with the entry
+    entry = History(task=task, author=user)
+
+    form = HistoryForm(request.POST or None, instance=entry)
+
+    envoi = False
+
+    if form.is_valid():
+        form.save()
+
+        envoi = True
+
+    return render(request, "taskmanager/create-entry.html", locals())

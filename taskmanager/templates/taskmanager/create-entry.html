@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ project.name }}</h1>
+    <h2>{{ task.name }}</h2>
+    <h3>Créer une entrée de journal</h3>
+
+    <form method="post" action="{% url "add_an_entry" project.id task.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>par {{ entry.author }}, le {{ entry.date }}</p>
+        <input type="submit" value="Ajouter l'entrée"/>
+    </form>
+
+    {% if envoi %}
+        <h3>Entrée ajoutée!</h3>
+    {% endif %}
+{% endblock %}
