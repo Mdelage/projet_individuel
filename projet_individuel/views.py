@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
-from taskmanager import views
 
 
-# This view redirects the user to the login page, in the taskmanager app
+# This view redirects the user to the projects page, in the taskmanager app
 def welcome(request):
-    return redirect('taskmanager/login/', permanent=True)
+    return redirect('view_all_projects', permanent=True)
