@@ -126,11 +126,11 @@ STATICFILES_DIR = (
     os.path.join(BASE_DIR, '/taskmanager/static/')
 )
 
-# URL to which the user is redirected after having logged out
-LOGOUT_REDIRECT_URL = '../login'
+# URL to which the user is redirected to after having logged out
+LOGOUT_REDIRECT_URL = 'login'
 
-# URL to which the user is redirected after having logged in
-LOGIN_REDIRECT_URL = '../projects'
+# URL to which the user is redirected to after having logged in
+LOGIN_REDIRECT_URL = 'view_all_projects'
 
 # URL to which unauthenticated users are redirected to
-LOGIN_URL = '../login'
+LOGIN_URL = 'login'
