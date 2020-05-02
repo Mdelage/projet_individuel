@@ -23,6 +23,9 @@
         {% endfor %}
     </table>
 
-    <h3><a href="{% url "add_a_task" project.id %}">Ajouter une tâche</a>
-        <h3/>
+    <h3>
+        <a href="{% url "add_a_task" project.id %}">Ajouter une tâche</a>
+    </h3>
+
+    <a href="{% url "view_all_projects" %}">Retour à la liste des projets</a>
 {% endblock %}

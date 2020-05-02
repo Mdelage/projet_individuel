@@ -15,4 +15,6 @@
     {% if envoi %}
         <h3>Entrée ajoutée!</h3>
     {% endif %}
+
+    <a href="{% url "view_details" project.id task.id %}">Retour aux détails de la tâche</a>
 {% endblock %}

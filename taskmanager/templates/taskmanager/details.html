@@ -48,4 +48,6 @@
     </table>
 
     <h4><a href="{% url "add_an_entry" project.id task.id %}">Ajouter une entrée</a></h4>
+
+    <a href="{% url "view_tasks" project.id %}">Retour à la liste des tâches</a>
 {% endblock %}
