@@ -6,7 +6,7 @@ from .models import Task, History
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = ['project']
+        exclude = ['project', 'assignee']
 
 
 # This form represents the form to add en entry to a task

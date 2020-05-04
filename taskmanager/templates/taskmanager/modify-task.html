@@ -6,6 +6,18 @@
 
     <form method="post" action="{% url "modify_a_task" project.id task.id %}">
         {% csrf_token %}
+        {% comment %}
+        Assignee is not a field of the task form.
+        Therefore, we add manually the assignee field to our HTML form.
+        This returns a POST parameter containing the id of the chosen user.
+        {% endcomment %}
+        <label for="assignee">Responsable de la tâche : </label>
+        <select id="assignee" name="assignee">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user }}</option>
+            {% empty %}
+            {% endfor %}
+        </select>
         {{ form.as_p }}
         <input type="submit" value="Modifier la tâche"/>
     </form>
